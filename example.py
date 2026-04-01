@@ -16,6 +16,7 @@ def NT_Serial(com, command):
         tep.open()
     except Exception as e:
         print("error opening serial port: \n" + str(e))
+        return
 
     # Write the contents of the "command" variable to the "tep" serial port. The encode() method
     # creates HEX values for these characters using the UTF-8 code set. Then tep.readline() stores
@@ -40,6 +41,7 @@ def NT_Serial(com, command):
     Lines = temp.split(c)
     m = Lines
     print(m)
+    tep.close()
 
 # Load the NT_Serial() function with the correct COM port and 409B command.
 # COM port and command can be passed as command-line arguments, e.g.:
