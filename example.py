@@ -42,4 +42,10 @@ def NT_Serial(com, command):
     print(m)
 
 # Load the NT_Serial() function with the correct COM port and 409B command.
-NT_Serial("COM3", "f0 15\n")
+# COM port and command can be passed as command-line arguments, e.g.:
+#   python example.py COM3 "f0 15\n"
+# If no arguments are provided, defaults to COM3 and "f0 15\n".
+import sys
+com_port = sys.argv[1] if len(sys.argv) > 1 else "COM3"
+command  = sys.argv[2] if len(sys.argv) > 2 else "f0 15\n"
+NT_Serial(com_port, command)
